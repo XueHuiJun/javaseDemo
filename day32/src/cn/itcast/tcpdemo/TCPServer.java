@@ -2,6 +2,7 @@ package cn.itcast.tcpdemo;
 
 import java.io.IOException;
 import java.io.InputStream;
+import java.io.OutputStream;
 import java.net.ServerSocket;
 import java.net.Socket;
 
@@ -15,6 +16,10 @@ public class TCPServer {
 		byte[] data = new byte[1024];
 		int len = inputStream.read(data);
 		System.out.println(new String(data,0,len));
+		
+		OutputStream outputStream = socket.getOutputStream();
+		byte[] data2 = "服务器已收到".getBytes();
+		outputStream.write(data2);
 		socket.close();
 		serverSocket.close();
 	}
